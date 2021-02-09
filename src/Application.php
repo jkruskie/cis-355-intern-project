@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
@@ -44,6 +43,10 @@ class Application extends BaseApplication
      */
     public function bootstrap(): void
     {
+        $this->addPlugin('DebugKit');
+
+        $this->addPlugin('DebugKit');
+
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
