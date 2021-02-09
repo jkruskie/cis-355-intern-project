@@ -24,14 +24,18 @@ $this->loadHelper('Authentication.Identity');
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>">
+            <!-- <a href="<?= $this->Url->build('/') ?>"> -->
             <img src="/img/logo_200x85.png" alt="">
         </div>
         <div class="top-nav-links">
             <?php
                 if ($this->Identity->isLoggedIn()) {
                     // User is authenticated
-                    echo('<a href="/home">Home</a>');
+                    echo('<form onsubmit="event.preventDefault();" role="search">
+                        <label for="search">Search for stuff</label>
+                        <input id="search" type="search" placeholder="Search..." autofocus required />
+                        <button type="submit">Go</button>    
+                        </form>');
                 } else {
                     // User is not authenticated
                     echo('<a href="/login">Login</a>');
