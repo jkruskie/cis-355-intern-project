@@ -114,7 +114,8 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         // If the user is logged in send them away.
         if ($result->isValid()) {
-            $target = $this->Authentication->getLoginRedirect() ?? '/home';
+            $target = $this->Authentication->getLoginRedirect() ?? '/internships';
+            $this->set(compact('result'));
             return $this->redirect($target);
         }
         if ($this->request->is('post') && !$result->isValid()) {
@@ -125,8 +126,8 @@ class UsersController extends AppController
     // Logout
     public function logout()
     {
-        $this->Flash->success('You are logged out');
-        return $this->redirect(['action' => 'login']);
+        $this->Authentication->logout();
+        return $this->redirect("/");
     }
 
     // Register

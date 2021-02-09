@@ -78,4 +78,11 @@ class InternshipsTable extends Table
 
         return $rules;
     }
+
+    // Return internships based on employers id
+    public function findEmployersInternships($id)
+    {
+        return $this->find()->where([
+                'user_id =' => $id]);
+    }
 }

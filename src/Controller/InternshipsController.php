@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use Cake\ORM\TableRegistry;
 
 class InternshipsController extends AppController
 {
@@ -11,7 +12,15 @@ class InternshipsController extends AppController
      */
     public function index()
     {
-        $internships = $this->paginate($this->Internships);
+        $internships = null;
+        if($this->request->getAttribute('identity')['user_type'] == 0) {
+            // Student, return all
+            $internships = $this->paginate($this->Internships);
+        } else {
+            // Employer, return only theirs
+            $internships = $this->paginate($this->Internships->findEmployersInternships($this->request->getAttribute('identity')['id']));
+        
+        }
 
         $this->set(compact('internships'));
     }
@@ -42,7 +51,7 @@ class InternshipsController extends AppController
         $internship = $this->Internships->newEmptyEntity();
         if ($this->request->is('post')) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
-            $internship['user_id'] = $this->Auth->user('id');
+            $internship['user_id'] = $this->request->getAttribute('identity')['id'];
             if ($this->Internships->save($internship)) {
                 $this->Flash->success(__('The internship has been saved.'));
 

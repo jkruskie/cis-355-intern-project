@@ -45,8 +45,6 @@
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Internship Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Created At') ?></th>
                             <th><?= __('Updated At') ?></th>
