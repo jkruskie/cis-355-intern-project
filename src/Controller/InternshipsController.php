@@ -2,12 +2,6 @@
 
 namespace App\Controller;
 
-/**
- * Internships Controller
- *
- * @property \App\Model\Table\InternshipsTable $Internships
- * @method \App\Model\Entity\Internship[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class InternshipsController extends AppController
 {
     /**
@@ -48,6 +42,7 @@ class InternshipsController extends AppController
         $internship = $this->Internships->newEmptyEntity();
         if ($this->request->is('post')) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
+            $internship['user_id'] = $this->Auth->user('id');
             if ($this->Internships->save($internship)) {
                 $this->Flash->success(__('The internship has been saved.'));
 

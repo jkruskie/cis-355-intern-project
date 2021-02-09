@@ -12,6 +12,7 @@
         "mobiledetect/mobiledetectlib": "^2.8"
     },
     "require-dev": {
+        "cakephp/authentication": "^2.5",
         "cakephp/bake": "^2.3",
         "cakephp/cakephp-codesniffer": "~4.2.0",
         "cakephp/debug_kit": "^4.4",

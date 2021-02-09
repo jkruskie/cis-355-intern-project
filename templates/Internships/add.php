@@ -17,7 +17,6 @@
             <fieldset>
                 <legend><?= __('Add Internship') ?></legend>
                 <?php
-                    echo $this->Form->control('user_id');
                     echo $this->Form->control('company_name');
                     echo $this->Form->control('company_location');
                     echo $this->Form->control('job_type');

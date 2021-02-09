@@ -214,3 +214,27 @@ th {
         content: " \2190";
     }
 }
+
+.text-center {
+    text-align: center;
+}
+
+.display-table {
+    display: table;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.text-1 {
+    font-size: 1rem;
+}
+
+.text-2 {
+    font-size: 2rem;
+}
+
+.text-3 {
+    font-size: 3rem;
+}
