@@ -24,18 +24,19 @@ $this->loadHelper('Authentication.Identity');
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <!-- <a href="<?= $this->Url->build('/') ?>"> -->
-            <img src="/img/logo_200x85.png" alt="">
+            <a href="<?= $this->Url->build('/') ?>">
+                <img src="/img/logo_200x85.png" alt="">
+            </a>
         </div>
         <div class="top-nav-links">
             <?php
                 if ($this->Identity->isLoggedIn()) {
                     // User is authenticated
-                    echo('<form onsubmit="event.preventDefault();" role="search">
-                        <label for="search">Search for stuff</label>
-                        <input id="search" type="search" placeholder="Search..." autofocus required />
-                        <button type="submit">Go</button>    
-                        </form>');
+                    // echo('<form onsubmit="event.preventDefault();" role="search">
+                    //     <label for="search">Search for stuff</label>
+                    //     <input id="search" type="search" placeholder="Search..." autofocus required />
+                    //     <button type="submit">Go</button>    
+                    //     </form>');
                 } else {
                     // User is not authenticated
                     echo('<a href="/login">Login</a>');
@@ -45,10 +46,11 @@ $this->loadHelper('Authentication.Identity');
         </div>
     </nav>
     <main class="main">
-        <div class="container">
+        <div class="container pb-10">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
+        <?= $this->element('default_footer') ?>
     </main>
     <footer>
     </footer>
