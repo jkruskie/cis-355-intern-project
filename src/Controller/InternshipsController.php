@@ -55,9 +55,20 @@ class InternshipsController extends AppController
         // Create new entity
         $internship = $this->Internships->newEmptyEntity();
         if ($this->request->is('post')) { 
-            // Pass through request data to empty entity
+            // Set internship data to the request data
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
-            // Set the user_id to the currently authenticated user
+            // See if there is an attached file
+            $files = $this->request->getUploadedFiles('file');
+            if($files['file']->getClientFileName() != null) {
+                // File is attached
+                // Generate a uuid for the filename
+                $uuid = Text::uuid() . ".pdf";
+                // Set the directory to save the file
+                $targetPath = WWW_ROOT . '/pdf/' . $uuid;
+                // SAve the file
+                $files['file']->moveTo($targetPath);
+                $internship->pdf_url = $uuid; 
+            }
             $internship['user_id'] = $this->request->getAttribute('identity')['id'];
             if ($this->Internships->save($internship)) {
                 // Saved the internship
