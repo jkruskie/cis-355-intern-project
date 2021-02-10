@@ -28,7 +28,7 @@
                             echo('<td><a target="_blank" href="/pdf/' . $internship->pdf_url . '"><input class="myclass" type="button" value="Download"/></a></td>');
                         } else {
                             // No PDF
-                            echo('<td></td>');
+                            echo('<td><input class="myclass" type="button" value="Download" disabled/></td>');
                         }
                     ?>
                 </tr>

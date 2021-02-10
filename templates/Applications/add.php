@@ -25,8 +25,10 @@ $this->loadHelper('Authentication.Identity');
                     if($internships->first()->get('pdf_url')) {
                         // Has PDF
                         echo('<a target="_blank" href="/pdf/' . $internships->first()->get('pdf_url') . '"><button type="button">Job Description</button></a>');
-                    }
+                    } else {
                         // No PDF
+                        echo('<button type="button" disabled>Job Description</button></a>');
+                    }
                 
                 ?>
             </fieldset>
