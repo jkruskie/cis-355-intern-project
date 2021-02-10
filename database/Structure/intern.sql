@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 09, 2021 at 09:22 PM
+-- Generation Time: Feb 10, 2021 at 02:10 PM
 -- Server version: 10.3.21-MariaDB
 -- PHP Version: 7.2.29
 
@@ -47,7 +47,8 @@ CREATE TABLE `internships` (
   `user_id` int(255) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `company_location` varchar(255) NOT NULL,
-  `job_type` varchar(255) NOT NULL
+  `job_type` varchar(255) NOT NULL,
+  `pdf_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

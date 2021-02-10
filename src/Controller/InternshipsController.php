@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Text;
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
 
 class InternshipsController extends AppController
 {
@@ -80,8 +83,22 @@ class InternshipsController extends AppController
         // Get internship of $id
         $internship = $this->Internships->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             // Set internship data to the request data
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
+            // See if there is an attached file
+            $files = $this->request->getUploadedFiles('file');
+            if($files['file']->getClientFileName() != null) {
+                // File is attached
+                // Generate a uuid for the filename
+                $uuid = Text::uuid() . ".pdf";
+                // Set the directory to save the file
+                $targetPath = WWW_ROOT . '/pdf/' . $uuid;
+                // SAve the file
+                $files['file']->moveTo($targetPath);
+                $internship->pdf_url = $uuid; 
+            }
+
             if ($this->Internships->save($internship)) {
                 // Saved successfully
                 $this->Flash->success(__('The internship has been saved.'));

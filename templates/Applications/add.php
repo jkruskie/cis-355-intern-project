@@ -23,6 +23,8 @@ $this->loadHelper('Authentication.Identity');
                     echo $this->Form->control('major', ['value' => $this->Identity->get('major') ]);
                 ?>
             </fieldset>
+            <a target="_blank" href="/pdf/<?= h($internships->first()->get('pdf_url')) ?>"><button type="button">Job Description</button></a>
+            <br>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

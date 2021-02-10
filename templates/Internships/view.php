@@ -21,12 +21,9 @@
                     <td><?= h($internship->job_type) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($internship->id) ?></td>
+                    <th><?= __('PDF Download') ?></th>
+                    <td><a target="_blank" href="/pdf/<?= h($internship->pdf_url) ?>"><input class='myclass' type='button' value='Download'/></a></td>
                 </tr>
-                <tr>
-                    <th><?= __('User Id') ?></th>
-                    <td><?= $this->Number->format($internship->user_id) ?></td>
                 </tr>
             </table>
             <div class="related">

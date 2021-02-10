@@ -22,5 +22,6 @@ class Internship extends Entity
         'company_location' => true,
         'job_type' => true,
         'applications' => true,
+        'pdf_url' => true,
     ];
 }

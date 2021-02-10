@@ -67,6 +67,12 @@ class InternshipsTable extends Table
             ->requirePresence('job_type', 'create')
             ->notEmptyString('job_type');
 
+            $validator
+            ->scalar('pdf_url')
+            ->maxLength('pdf_url', 255)
+            ->requirePresence('pdf_url', 'create')
+            ->allowEmptyString('pdf_url');
+
         return $validator;
     }
 
