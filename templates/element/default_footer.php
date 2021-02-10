@@ -29,6 +29,7 @@
                         if ($this->Identity->isLoggedIn()) {
                             echo('<li><a href="/internships">Internships</a></li>');
                             echo('<li><a href="/applications">Applications</a></li>');
+                            echo('<li><a href="/users">Users</a></li>');
                             echo('<li><a href="/logout">Logout</a></li>');
                         } else {
                             // User is not authenticated

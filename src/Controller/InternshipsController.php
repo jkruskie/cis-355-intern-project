@@ -34,6 +34,7 @@ class InternshipsController extends AppController
      */
     public function view($id = null)
     {
+        // Return internship of $id /w applications
         $internship = $this->Internships->get($id, [
             'contain' => ['Applications'],
         ]);
@@ -48,15 +49,20 @@ class InternshipsController extends AppController
      */
     public function add()
     {
+        // Create new entity
         $internship = $this->Internships->newEmptyEntity();
-        if ($this->request->is('post')) {
+        if ($this->request->is('post')) { 
+            // Pass through request data to empty entity
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
+            // Set the user_id to the currently authenticated user
             $internship['user_id'] = $this->request->getAttribute('identity')['id'];
             if ($this->Internships->save($internship)) {
+                // Saved the internship
                 $this->Flash->success(__('The internship has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
+            // Save failed
             $this->Flash->error(__('The internship could not be saved. Please, try again.'));
         }
         $this->set(compact('internship'));
@@ -71,16 +77,18 @@ class InternshipsController extends AppController
      */
     public function edit($id = null)
     {
-        $internship = $this->Internships->get($id, [
-            'contain' => [],
-        ]);
+        // Get internship of $id
+        $internship = $this->Internships->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // Set internship data to the request data
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
             if ($this->Internships->save($internship)) {
+                // Saved successfully
                 $this->Flash->success(__('The internship has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
+            // Save failed
             $this->Flash->error(__('The internship could not be saved. Please, try again.'));
         }
         $this->set(compact('internship'));
@@ -96,10 +104,13 @@ class InternshipsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // Get internship by $id
         $internship = $this->Internships->get($id);
         if ($this->Internships->delete($internship)) {
+            // Delete success
             $this->Flash->success(__('The internship has been deleted.'));
         } else {
+            // Delete failed
             $this->Flash->error(__('The internship could not be deleted. Please, try again.'));
         }
 

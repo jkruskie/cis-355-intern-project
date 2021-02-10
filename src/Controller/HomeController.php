@@ -15,7 +15,7 @@ class HomeController extends AppController
 
     public function index()
     {
-        //
+        // Empty function to load page
     }
 
 }

@@ -15,12 +15,10 @@
                     <th><?= $this->Paginator->sort('first_name') ?></th>
                     <th><?= $this->Paginator->sort('last_name') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('school_years') ?></th>
                     <th><?= $this->Paginator->sort('major') ?></th>
                     <th><?= $this->Paginator->sort('user_type') ?></th>
                     <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('updated_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -31,12 +29,10 @@
                     <td><?= h($user->first_name) ?></td>
                     <td><?= h($user->last_name) ?></td>
                     <td><?= h($user->email) ?></td>
-                    <td><?= $this->Number->format($user->password) ?></td>
                     <td><?= $this->Number->format($user->school_years) ?></td>
                     <td><?= h($user->major) ?></td>
                     <td><?= $this->Number->format($user->user_type) ?></td>
                     <td><?= h($user->created_at) ?></td>
-                    <td><?= h($user->updated_at) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
