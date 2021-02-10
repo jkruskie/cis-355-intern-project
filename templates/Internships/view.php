@@ -22,7 +22,15 @@
                 </tr>
                 <tr>
                     <th><?= __('PDF Download') ?></th>
-                    <td><a target="_blank" href="/pdf/<?= h($internship->pdf_url) ?>"><input class='myclass' type='button' value='Download'/></a></td>
+                    <?php
+                        if($internship->pdf_url) {
+                            // PDF Url exists
+                            echo('<td><a target="_blank" href="/pdf/' . $internship->pdf_url . '"><input class="myclass" type="button" value="Download"/></a></td>');
+                        } else {
+                            // No PDF
+                            echo('<td></td>');
+                        }
+                    ?>
                 </tr>
                 </tr>
             </table>

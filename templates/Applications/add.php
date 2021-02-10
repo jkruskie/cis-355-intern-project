@@ -21,9 +21,15 @@ $this->loadHelper('Authentication.Identity');
                     echo $this->Form->control('name', ['value' => $name ]);
                     echo $this->Form->control('years_of_college', ['value' => $this->Identity->get('school_years') ]);
                     echo $this->Form->control('major', ['value' => $this->Identity->get('major') ]);
+
+                    if($internships->first()->get('pdf_url')) {
+                        // Has PDF
+                        echo('<a target="_blank" href="/pdf/' . $internships->first()->get('pdf_url') . '"><button type="button">Job Description</button></a>');
+                    }
+                        // No PDF
+                
                 ?>
             </fieldset>
-            <a target="_blank" href="/pdf/<?= h($internships->first()->get('pdf_url')) ?>"><button type="button">Job Description</button></a>
             <br>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
