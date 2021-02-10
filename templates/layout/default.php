@@ -37,10 +37,11 @@ $this->loadHelper('Authentication.Identity');
                     //     <input id="search" type="search" placeholder="Search..." autofocus required />
                     //     <button type="submit">Go</button>    
                     //     </form>');
+                    echo('<a href="/internships"><button class="button button-outline">Home</button></a>');
                 } else {
                     // User is not authenticated
-                    echo('<a href="/login">Login</a>');
-                    echo('<a href="/register">Register</a>');
+                    echo('<a href="/login"><button class="button button-outline">Login</button></a>');
+                    echo('<a href="/register"><button class="button button-outline">Register</button></a>');
                 }
             ?>
         </div>

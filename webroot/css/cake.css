@@ -400,3 +400,8 @@ input:not(:placeholder-shown) {
     text-align:center
   }
 }
+
+.message {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}

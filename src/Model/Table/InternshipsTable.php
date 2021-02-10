@@ -9,6 +9,11 @@ use Cake\Validation\Validator;
 
 class InternshipsTable extends Table
 {
+
+    public $actsAs = array('Containable');
+    public $belongsTo = array('User');
+
+
     /**
      * Initialize method
      *
@@ -86,10 +91,18 @@ class InternshipsTable extends Table
                 'user_id =' => $id]);
     }
 
-        // Return available internships
-        public function findAvailableInternships($id)
+        // Return available internships (Not applied for)
+        public function findAvailableInternships()
         {
-            return $this->find()->where([
-                    'user_id =' => $id]);
+            return $this->find('all',
+            [
+               'contain' => ['Applications'] 
+            ]
+            );
+        }
+
+        public function findSelectedName()
+        {
+            return $this->find();
         }
 }

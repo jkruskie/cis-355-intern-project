@@ -4,8 +4,8 @@
  * @var \App\Model\Entity\Internship $internship
  */
 ?>
-<div class="row">
-    <div class="column-responsive column-80">
+<div class="row text-center">
+    <div class="column-responsive column-100">
         <div class="internships form content">
             <?= $this->Form->create($internship) ?>
             <fieldset>

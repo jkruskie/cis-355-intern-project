@@ -1,3 +1,6 @@
+<?php $this->loadHelper('Authentication.Identity'); ?>
+
+
 <!-- HEADER -->
 <div style="margin-bottom: -1%;">
     <div class="column column-100 full-width">
@@ -30,7 +33,7 @@
 <!-- END HEADER -->
 
 <!-- HOW TO -->
-<div class="row">
+<div class="row pb-10">
     <div class="row">
         <div class="column column-100 text-center" style="padding-top: 8%;">
             <h3><b>Tell us about yourself.</b></h3>
@@ -69,11 +72,14 @@
         </div>
     </div>
     <div class="row pb-10 display-table">
-        <a href="/register">
-            <div class="column column-100 text-center">
-                <button class="button">Get Hired</button>
-            </div>
-        </a>
+        <?php
+            if ($this->Identity->isLoggedIn()) {
+                echo('<a href="/internships"><div class="column column-100 text-center"><button class="button">Get Hired</button></div></a>');
+            } else {
+                // User is not authenticated
+                echo('<a href="/register"><div class="column column-100 text-center"><button class="button">Get Hired</button></div></a>');
+            }
+        ?>
     </div>
 </div>
 <!-- END HOW TO -->

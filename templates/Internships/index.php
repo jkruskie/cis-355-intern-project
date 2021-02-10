@@ -27,9 +27,11 @@
                         <?php
                             if($this->request->getAttribute('identity')['user_type'] == 0) {
                                 // Student
-                                echo $this->Html->link(__('Apply'), ['action' => 'view', $internship->id]);   
+                                echo $this->Html->link(__('Apply'), ['controller' => 'Applications', 
+                                'action' => 'add', $internship->id]);   
                             } else {
                                 // Employer
+                                echo $this->Html->link(__('View'), ['action' => 'view', $internship->id]);
                                 echo $this->Html->link(__('Edit'), ['action' => 'edit', $internship->id]);
                                 echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $internship->id], ['confirm' => __('Are you sure you want to delete # {0}?', $internship->id)]);
                             }

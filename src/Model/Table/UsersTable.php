@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 
 class UsersTable extends Table
 {
+
+    public $actsAs = array('Containable');
+    
     /**
      * Initialize method
      *

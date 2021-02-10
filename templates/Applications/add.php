@@ -3,24 +3,24 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Application $application
  */
+$this->loadHelper('Authentication.Identity');
+
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Applications'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
+<div class="row text-center">
+    <div class="column-responsive column-100">
         <div class="applications form content">
             <?= $this->Form->create($application) ?>
             <fieldset>
-                <legend><?= __('Add Application') ?></legend>
+                <legend><?= __('Apply for Internship') ?></legend>
                 <?php
-                    echo $this->Form->control('internship_id', ['options' => $internships]);
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('updated_at');
+                    $user = $this->Identity;
+                    $name = $user->get('first_name') . " " . $user->get('last_name');
+                    echo $this->Form->control('company_name', ['value' => $internships->first()->get('company_name')]);
+                    echo $this->Form->control('company_location', ['value' => $internships->first()->get('company_location')]);
+                    echo $this->Form->control('job_type', ['value' => $internships->first()->get('job_type')]);
+                    echo $this->Form->control('name', ['value' => $name ]);
+                    echo $this->Form->control('years_of_college', ['value' => $this->Identity->get('school_years') ]);
+                    echo $this->Form->control('major', ['value' => $this->Identity->get('major') ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

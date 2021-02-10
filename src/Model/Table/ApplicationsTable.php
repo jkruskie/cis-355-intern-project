@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 
 class ApplicationsTable extends Table
 {
+    public $actsAs = array('Containable');
+    public $belongsTo = array('User','Application');
     /**
      * Initialize method
      *
@@ -22,6 +24,7 @@ class ApplicationsTable extends Table
         $this->setTable('applications');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
 
         $this->belongsTo('Internships', [
             'foreignKey' => 'internship_id',
@@ -70,4 +73,5 @@ class ApplicationsTable extends Table
 
         return $rules;
     }
+    
 }

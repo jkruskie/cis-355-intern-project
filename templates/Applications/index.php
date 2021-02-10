@@ -11,22 +11,18 @@
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('internship_id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
+                    <th><?= $this->Paginator->sort('internship_name') ?></th>
+                    <th><?= $this->Paginator->sort('company_location') ?></th>
                     <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('updated_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($applications as $application): ?>
                 <tr>
-                    <td><?= $this->Number->format($application->id) ?></td>
-                    <td><?= $application->has('internship') ? $this->Html->link($application->internship->id, ['controller' => 'Internships', 'action' => 'view', $application->internship->id]) : '' ?></td>
-                    <td><?= $application->has('user') ? $this->Html->link($application->user->id, ['controller' => 'Users', 'action' => 'view', $application->user->id]) : '' ?></td>
+                    <td><?= $application->has('internship') ? $this->Html->link($application->internship->company_name, ['controller' => 'Internships', 'action' => 'view', $application->internship->id]) : '' ?></td>
+                    <td><?= $application->has('internship') ? $this->Html->link($application->internship->company_location, ['controller' => 'Users', 'action' => 'view', $application->user->id]) : '' ?></td>
                     <td><?= h($application->created_at) ?></td>
-                    <td><?= h($application->updated_at) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $application->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $application->id]) ?>

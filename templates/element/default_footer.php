@@ -25,8 +25,17 @@
             <div class="column column-15">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
+                    <?php
+                        if ($this->Identity->isLoggedIn()) {
+                            echo('<li><a href="/internships">Internships</a></li>');
+                            echo('<li><a href="/applications">Applications</a></li>');
+                            echo('<li><a href="/logout">Logout</a></li>');
+                        } else {
+                            // User is not authenticated
+                            echo('<li><a href="/login">Login</a></li>');
+                            echo('<li><a href="/register">Register</a></li>');
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

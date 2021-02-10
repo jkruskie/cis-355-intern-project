@@ -30,7 +30,6 @@
                     echo $this->Form->control('major');
                     echo $this->Form->control('user_type');
                     echo $this->Form->control('created_at');
-                    echo $this->Form->control('updated_at');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

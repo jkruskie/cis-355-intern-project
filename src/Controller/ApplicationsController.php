@@ -2,12 +2,6 @@
 
 namespace App\Controller;
 
-/**
- * Applications Controller
- *
- * @property \App\Model\Table\ApplicationsTable $Applications
- * @method \App\Model\Entity\Application[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class ApplicationsController extends AppController
 {
     /**
@@ -46,21 +40,24 @@ class ApplicationsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
         $application = $this->Applications->newEmptyEntity();
         if ($this->request->is('post')) {
-            $application = $this->Applications->patchEntity($application, $this->request->getData());
+            $application->internship_id = $id;
+            // https://book.cakephp.org/authentication/2/en/authentication-component.html
+            $application->user_id = $this->Authentication->getIdentity()->get('id');
+            // print_r($application);
+            // $application = $this->Applications->patchEntity($application, $this->request->getData());
             if ($this->Applications->save($application)) {
-                $this->Flash->success(__('The application has been saved.'));
+                $this->Flash->success(__('The application has been submitted.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The application could not be saved. Please, try again.'));
         }
-        $internships = $this->Applications->Internships->find('list', ['limit' => 200]);
-        $users = $this->Applications->Users->find('list', ['limit' => 200]);
-        $this->set(compact('application', 'internships', 'users'));
+        $internships = $this->Applications->Internships->findById($id)->all();
+        $this->set(compact('application', 'internships'));
     }
 
     /**

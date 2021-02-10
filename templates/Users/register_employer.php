@@ -1,5 +1,5 @@
 <div class="row" id="employerForm">
-    <div class="column-responsive column-100">
+    <div class="column-responsive column-100 text-center">
     
         <div class="users form content">
             <?= $this->Form->create() ?>

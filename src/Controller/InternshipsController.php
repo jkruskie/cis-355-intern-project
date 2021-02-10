@@ -15,7 +15,7 @@ class InternshipsController extends AppController
         $internships = null;
         if($this->request->getAttribute('identity')['user_type'] == 0) {
             // Student, return all
-            $internships = $this->paginate($this->Internships);
+            $internships = $this->paginate($this->Internships->findAvailableInternships());
         } else {
             // Employer, return only theirs
             $internships = $this->paginate($this->Internships->findEmployersInternships($this->request->getAttribute('identity')['id']));
