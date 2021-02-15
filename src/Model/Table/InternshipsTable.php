@@ -97,18 +97,13 @@ class InternshipsTable extends Table
                 'user_id =' => $id]);
     }
 
-        // Return available internships (Not applied for)
-        public function findAvailableInternships()
-        {
-            return $this->find('all',
-            [
-               'contain' => ['Applications'] 
-            ]
-            );
-        }
-
-        public function findSelectedName()
-        {
-            return $this->find();
-        }
+    // Return available internships
+    public function findAvailableInternships()
+    {
+        return $this->find('all',
+        [
+            'contain' => ['Applications'] 
+        ]
+        );
+    }
 }

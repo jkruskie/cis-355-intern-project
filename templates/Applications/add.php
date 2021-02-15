@@ -15,12 +15,12 @@ $this->loadHelper('Authentication.Identity');
                 <?php
                     $user = $this->Identity;
                     $name = $user->get('first_name') . " " . $user->get('last_name');
-                    echo $this->Form->control('company_name', ['value' => $internships->first()->get('company_name')]);
-                    echo $this->Form->control('company_location', ['value' => $internships->first()->get('company_location')]);
-                    echo $this->Form->control('job_type', ['value' => $internships->first()->get('job_type')]);
-                    echo $this->Form->control('name', ['value' => $name ]);
-                    echo $this->Form->control('years_of_college', ['value' => $this->Identity->get('school_years') ]);
-                    echo $this->Form->control('major', ['value' => $this->Identity->get('major') ]);
+                    echo $this->Form->control('company_name', ['value' => $internships->first()->get('company_name'), 'disabled']);
+                    echo $this->Form->control('company_location', ['value' => $internships->first()->get('company_location'), 'disabled']);
+                    echo $this->Form->control('job_type', ['value' => $internships->first()->get('job_type'), 'disabled']);
+                    echo $this->Form->control('name', ['value' => $name, 'disabled']);
+                    echo $this->Form->control('years_of_college', ['value' => $this->Identity->get('school_years'), 'disabled']);
+                    echo $this->Form->control('major', ['value' => $this->Identity->get('major'), 'disabled']);
 
                     if($internships->first()->get('pdf_url')) {
                         // Has PDF
