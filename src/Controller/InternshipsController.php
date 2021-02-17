@@ -49,6 +49,10 @@ class InternshipsController extends AppController
      * Add method
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     * 
+     * https://book.cakephp.org/4/en/core-libraries/text.html
+     * https://book.cakephp.org/4/en/controllers/request-response.html
+     * 
      */
     public function add()
     {

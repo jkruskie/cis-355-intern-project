@@ -43,6 +43,9 @@ class ApplicationsController extends AppController
      * This has to has a param of id in order to continue.
      * This is to stop random applications being created outside of an internship.
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     * 
+     * https://book.cakephp.org/authentication/2/en/authentication-component.html
+     * 
      */
     public function add($id = null)
     {
@@ -51,9 +54,7 @@ class ApplicationsController extends AppController
         if ($this->request->is('post')) {
             // Assign internship id and user id manually.
             $application->internship_id = $id;
-            // https://book.cakephp.org/authentication/2/en/authentication-component.html
             $application->user_id = $this->Authentication->getIdentity()->get('id');
-            // $application = $this->Applications->patchEntity($application, $this->request->getData());
             if ($this->Applications->save($application)) {
                 // Application created successfully
                 $this->Flash->success(__('The application has been submitted.'));
@@ -63,6 +64,7 @@ class ApplicationsController extends AppController
             // Application creation failed
             $this->Flash->error(__('The application could not be saved. Please, try again.'));
         }
+        
         $internships = $this->Applications->Internships->findById($id)->all();
         $this->set(compact('application', 'internships'));
     }

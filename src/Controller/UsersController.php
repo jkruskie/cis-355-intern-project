@@ -76,6 +76,9 @@ class UsersController extends AppController
      * @param string|null $id User id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * 
+     * https://book.cakephp.org/2/en/models/saving-your-data.html
+     * 
      */
     public function edit($id = null)
     {
@@ -84,7 +87,6 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Fill user with data
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            // https://book.cakephp.org/2/en/models/saving-your-data.html
             if ($this->Users->save($user)) {
                 // User saved successfully
                 $this->Flash->success(__('The user has been saved.'));
@@ -146,7 +148,9 @@ class UsersController extends AppController
     }
 
     // Register
-    public function register() { }
+    public function register() {
+        // This function doesn't actually do anything. It is only here to make the framework happy.
+    }
 
     // Register Student
     public function registerStudent()
