@@ -5,7 +5,19 @@
 <div style="margin-bottom: -1%;">
     <div class="column column-100 full-width">
         <div class="card">
-            <img src="/img/business-suit.jpg" alt="Avatar" style="width:100%">
+        <!-- NOTE:
+        Corser was having issues with images on showing.
+        This is due to not have a documentroot for each website.
+        Document root is: /htdocs
+        When you have the / in front of the image src, it looks
+        for the image at the documentroot.
+        Removing the first / makes it look in the currently directory
+        that the user is viewing.
+        Old Example: <img src="/img/business-suit.jpg" alt="Avatar" style="width:100%">
+        New Example: <img src="img/business-suit.jpg" alt="Avatar" style="width:100%">
+        4/19/21 jtk
+         -->
+            <img src="img/business-suit.jpg" alt="Avatar" style="width:100%">
         </div>
     </div>
 </div>
@@ -21,7 +33,7 @@
     </div>
 </div>
 <div class="row text-center display-table">
-    <img src="/img/arrow.svg" class="bounce" alt="Scroll to continue" style="margin-top: -4rem;">
+    <img src="img/arrow.svg" class="bounce" alt="Scroll to continue" style="margin-top: -4rem;">
 </div>
 <br><br>
 <div class="row">
@@ -45,7 +57,7 @@
         </div>
         <div class="column column-100">
                 <div class="card">
-                    <img src="/img/girl-with-laptop.jpg" style="width:100%">
+                    <img src="img/girl-with-laptop.jpg" style="width:100%">
                 </div>
             </div>
         </div>
@@ -54,7 +66,7 @@
     <div class="row pb-10">
         <div class="column column-100">
             <div class="card">
-                <img src="/img/apply-now.jpg" style="width:100%">
+                <img src="img/apply-now.jpg" style="width:100%">
             </div>
         </div>
         <div class="column column-100 text-center" style="padding-top: 10%;">
